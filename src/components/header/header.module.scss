@@ -1,0 +1,49 @@
+.header {
+  background: #222222;
+  height: 75px;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 18px;
+    &__search {
+      margin-left: 41px;
+    }
+    &__user {
+      margin-left: 25px;
+      margin-right: 42px;
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+    &__basketWrap {
+      position: relative;
+      span {
+        display: inline-block;
+        width: 19px;
+        height: 19px;
+        color: #FFFFFF;
+        background: #F16D7F;
+        border-radius: 50%;
+        position: absolute;
+        text-align: center;
+        right: -8px;
+        top: -20px;
+        font-family: Lato, sans-serif;
+        font-size: 12px;
+        line-height: 17px;
+      }
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 1600px) {
+      padding-left: 16px;
+      padding-right: 25px;
+    }
+    @media (max-width: 767px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

@@ -79,4 +79,4 @@ export const footer = () => {
     </div>
   ` :
   ''
-}
+};

@@ -13,6 +13,7 @@ import { productsList } from "../goods/goods";
 export const main = () => {
   const mainHtmlEl = document.getElementById('result');
   location.hash = 'main';
+  window.scrollTo(0,0);
 
   const renderGoods = (feturedCardsHtmlEl: HTMLElement | null) => {
     for (let i = 0; i < 6; i++) {

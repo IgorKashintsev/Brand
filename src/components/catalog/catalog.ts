@@ -14,6 +14,7 @@ import imgArrowRight from 'images/ArrowRight.svg';
 
 export const catalog = () => {
   const catalogHtmlEl = document.getElementById('result');
+  window.scrollTo(0,0);
 
   const renderGoods = (feturedCardsHtmlEl: HTMLElement | null) => {
     for (let i = 0; i < 9; i++) {
@@ -47,9 +48,9 @@ export const catalog = () => {
       <div class="${style.filters__left}">
         <span>FILTER</span>
         <img class="${style.filters__left__img}" src="${imgFilter}" alt="filter">
-        <img class="${style.filters__left__imgBig__pink}" src="${imgFilterBig_pink}" alt="filterBig">
-        <img class="${style.filters__left__img__pink}" src="${imgFilter_pink}" alt="Filter_pink">
         <div class="${style.filters__left__menu}">
+          <img class="${style.filters__left__imgBig__pink}" src="${imgFilterBig_pink}" alt="filterBig">
+          <img class="${style.filters__left__img__pink}" src="${imgFilter_pink}" alt="Filter_pink">
           <nav>
             <div class="${style.filters__left__menu__category}">CATEGORY</div>
             <div class="${style.filters__left__menu__list}">

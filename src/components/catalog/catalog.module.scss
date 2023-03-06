@@ -77,8 +77,8 @@
       display: inline;
       position: absolute;
       z-index: 2;
-      top: 6px;
-      left: 73px;
+      top: 16px;
+      left: 78px;
       @media (max-width: 767px) {
         display: none;
       }
@@ -88,7 +88,6 @@
         display: inline;
         position: absolute;
         z-index: 2;
-        margin-left: -38px;
       }
     }
     &__menu {
@@ -204,13 +203,14 @@
       }
     }
     &__size {
+      height: 18px;
       padding-left: 28px;
       position: relative;
       &__menu {
         display: none;
         position: absolute;
         left: 20px;
-        top: 20px;
+        top: 18px;
         width: 79px;
         height: 103px;
         background: #FFFFFF;

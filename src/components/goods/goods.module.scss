@@ -27,7 +27,6 @@
         line-height: 17px;
         padding: 10px 13px;
         color: #FFFFFF;
-        font-family: Lato, sans-serif;
         &:hover {
           cursor: pointer;
         }
@@ -37,6 +36,9 @@
       display: flex;
       cursor: pointer;
     }
+  }
+  &__product {
+    cursor: pointer;
   }
   &__name {
     padding-top: 25px;
@@ -60,5 +62,89 @@
     font-size: 16px;
     line-height: 19px;
     color: #F16D7F;
+  }
+}
+.shoppingCart__cards__mangoPeople {
+  display: flex;
+  box-shadow: (17px 19px 24px rgba(0, 0, 0, 0.13));
+  & img:nth-child(odd) {
+    max-width: 262px;
+    height: 306px;
+    @media (max-width: 767px) {
+      height: 188px;
+    }
+  }
+  &__info {
+    width: 100%;
+    position: relative;
+    margin-left: 31px;
+    & img {
+      position: absolute;
+      top: 28px;
+      right: 22px;
+      cursor: pointer;
+      @media (max-width: 767px) {
+        height: 10px;
+        width: 10px;
+        top: 17px;
+        right: 12px;
+      }
+    }
+    & h2 {
+      font-size: 24px;
+      color: #222222;
+      max-width: 210px;
+      margin-top: 22px;
+      margin-bottom: 42px;
+      @media (max-width: 767px) {
+        font-size: 16px;
+        max-width: 126px;
+        margin-top: 13px;
+        margin-bottom: 26px;
+      }
+    }
+    & li {
+      font-size: 22px;
+      line-height: 26px;
+      color: #575757;
+      list-style-type: none;
+      @media (max-width: 767px) {
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+    &__price {
+      color: #F16D7F;
+    }
+    &__quantity{
+      width: 32px;
+      font-size: 22px;
+      line-height: 26px;
+      color: #575757;
+      border: 1px solid #EAEAEA;
+      padding-left: 18px;
+      margin-left: 24px;
+      @media (max-width: 767px) {
+        margin-left: 15px;
+      }
+    }
+    & li:not(:last-child) {
+      margin-bottom: 6px;
+      @media (max-width: 767px) {
+        margin-bottom: 4px;
+      }
+    }
+    @media (max-width: 767px) {
+      margin-left: 17px;
+    }
+  }
+  &:not(:last-child) {
+    margin-bottom: 40px;
+    @media (max-width: 767px) {
+      margin-bottom: 32px;
+    }
+  }
+  @media (max-width: 767px) {
+    height: 188px;
   }
 }

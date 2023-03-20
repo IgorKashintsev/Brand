@@ -6,11 +6,12 @@ import imgBar from 'images/bar.svg';
 import imgUser from 'images/user.svg';
 import imgBasket from 'images/basket.svg';
 import imgClose from 'images/close.svg';
+import { cartList } from '../goods/goods';
 
 export const header = () => {
   const headerHtmlEl = document.getElementById('header');
 
-  let promise = new Promise(function(resolve, reject) {
+  const promise = new Promise(function(resolve, reject) {
     resolve('done');
     reject((err: Error) => console.log(err));
   });
@@ -19,18 +20,25 @@ export const header = () => {
     const barHtmlEl = document.getElementById('bar');
     const closeHtmlEl = document.getElementById('close');
     const logoHtmlEl = document.getElementById('logo');
-    barHtmlEl?.addEventListener('click', () => {
-      document.getElementById('menu')?.classList.toggle(`${style.menu__active}`);
-    });
-    closeHtmlEl?.addEventListener('click', () => {
-      document.getElementById('menu')?.classList.toggle(`${style.menu__active}`)
-    });
+    const menuHtmlEl = document.getElementById('menu');
+    const cartHtmlEl = document.getElementById('basket');
+    const userHtmlEl = document.getElementById('user');
+    barHtmlEl?.addEventListener('click', () => 
+      menuHtmlEl?.classList.toggle(`${style.menu__active}`)
+    );
+    closeHtmlEl?.addEventListener('click', () => 
+      menuHtmlEl?.classList.toggle(`${style.menu__active}`)
+    );
     logoHtmlEl?.addEventListener('click', () => location.hash = 'main');
-    }
-  ).catch((err: Error) => console.log(err))
+    cartHtmlEl?.addEventListener('click', () => location.hash = 'cart');
+    userHtmlEl?.addEventListener('click', () => location.hash = 'user');
+    addEventListener('hashchange', () => 
+      menuHtmlEl?.classList.add(`${style.menu__active}`)
+    );
+  }).catch((err: Error) => console.log(err));
 
   headerHtmlEl ? 
-  headerHtmlEl.innerHTML = `
+    headerHtmlEl.innerHTML = `
     <div class="${style.header}">
       <div class="${styleGlobal.container}">
         <div class="${style.header__top}">
@@ -40,10 +48,12 @@ export const header = () => {
           </div>
           <div>
             <img id="bar" class="${style.header__top__bar}" src="${imgBar}" alt="bar">
-            <img class="${style.header__top__user}" src="${imgUser}" alt="user">
-            <span class="${style.header__top__basketWrap}">
+            <img id="user" class="${style.header__top__user}" src="${imgUser}" alt="user">
+            <span id="basket" class="${style.header__top__basketWrap}">
               <img class="basket" src="${imgBasket}" alt="basket">
-              <span>5</span>
+              <span
+                id="quantityCart"
+              >${cartList.quantityCart}</span>
             </span>
           </div>
         </div>
@@ -81,5 +91,5 @@ export const header = () => {
       </div>
     </div>
   ` :
-  ''
+    '';
 };

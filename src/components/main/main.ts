@@ -8,35 +8,37 @@ import imgGroup39 from 'images/Group_39.png';
 import imgForma1 from 'images/Forma_1.svg';
 import imgForma2 from 'images/Forma_2.svg';
 import imgForma3 from 'images/Forma_3.svg';
-import { productsList } from "../goods/goods";
+import { cartList, productsList } from '../goods/goods';
 
 export const main = () => {
   const mainHtmlEl = document.getElementById('result');
   location.hash = 'main';
   window.scrollTo(0,0);
 
-  const renderGoods = (feturedCardsHtmlEl: HTMLElement | null) => {
+  const renderGoods = () => {
+    const feturedCardsHtmlEl = document.getElementById('fetured__cards');
     for (let i = 0; i < 6; i++) {
       feturedCardsHtmlEl ?
-      feturedCardsHtmlEl.insertAdjacentHTML('beforeend', productsList.getHTMLString(i)) :
-      '';
+        feturedCardsHtmlEl.insertAdjacentHTML('beforeend', productsList.getHTMLStringProduct(i)) :
+        '';
     }
   };
 
-  let promise = new Promise(function(resolve, reject) {
+  const promise = new Promise(function(resolve, reject) {
     resolve('done');
     reject((err: Error) => console.log(err));
   });
 
   promise.then(() => {
     const buttonHtmlEl = document.getElementById('catalog');
-    const feturedCardsHtmlEl = document.getElementById('fetured__cards');
-    renderGoods(feturedCardsHtmlEl);
+    renderGoods();
+    const blockProducts: HTMLDivElement | null = document.querySelector('#fetured__cards');
+    cartList.handleClickBuyBtn(blockProducts!);
     buttonHtmlEl?.addEventListener('click', () => location.hash = 'catalog');
-  }).catch((err: Error) => console.log(err))
+  }).catch((err: Error) => console.log(err));
 
   mainHtmlEl ?
-  mainHtmlEl.innerHTML = `
+    mainHtmlEl.innerHTML = `
   <div class="${style.brand}">
     <div class="${style.brand__left}">
       <img class="${style.brand__left__photo}" src="${imgTop}" alt="photo">
@@ -92,27 +94,28 @@ export const main = () => {
         <div class="${style.services__wrap__unit}">
           <img src="${imgForma1}" alt="photo">
           <h3 class="${style.h3__forma_1}">Free Delivery</h3>
-          <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with
-            extensive
-            models.</p>
+          <p>Worldwide delivery on all. 
+            Authorit tively morph next-generation innov tion with extensive models.
+          </p>
         </div>
         <div class="${style.services__wrap__unit}">
           <img src="${imgForma2}" alt="photo">
           <h3 class="${style.h3__forma_2}">Sales & discounts</h3>
-          <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with
-            extensive
-            models.</p>
+          <p>Worldwide delivery on all. 
+            Authorit tively morph next-generation innov tion with extensive
+            models.
+          </p>
         </div>
         <div class="${style.services__wrap__unit}">
           <img src="${imgForma3}" alt="photo">
           <h3 class="${style.h3__forma_3}">Quality assurance</h3>
-          <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with
-            extensive
-            models.</p>
+          <p>Worldwide delivery on all. 
+            Authorit tively morph next-generation innov tion with extensive models.
+          </p>
         </div>
       </div>
     </div>
   </div>
   ` :
-  ''
+    '';
 };

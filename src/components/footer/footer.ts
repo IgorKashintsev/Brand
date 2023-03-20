@@ -10,7 +10,7 @@ export const footer = () => {
   const footerHtmlEl = document.getElementById('footer');
 
   footerHtmlEl ?
-  footerHtmlEl.innerHTML = `
+    footerHtmlEl.innerHTML = `
     <div class="${style.subscribe}">
       <div class="${styleGlobal.container}">
         <div class="${style.subscribe__blocks}">
@@ -31,8 +31,8 @@ export const footer = () => {
               FOR OUR NEWLETTER AND PROMOTION
             </div>
             <form action="#" class="${style.subscribe__blocks__right__form}">
-              <input type="text" placeholder="Enter Your Email">
-              <button>Subscribe</button>
+              <input type="email" placeholder="Enter Your Email">
+              <button type="submit" >Subscribe</button>
             </form>
           </div>
         </div>
@@ -78,5 +78,5 @@ export const footer = () => {
       </div>
     </div>
   ` :
-  ''
+    '';
 };

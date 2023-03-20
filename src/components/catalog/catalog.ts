@@ -1,4 +1,4 @@
-import { productsList } from '../goods/goods';
+import { cartList, productsList } from '../goods/goods';
 import styleGlobal from '../../global.module.scss';
 import styleMain from '../main/main.module.scss';
 import style from './catalog.module.scss';
@@ -15,27 +15,86 @@ import imgArrowRight from 'images/ArrowRight.svg';
 export const catalog = () => {
   const catalogHtmlEl = document.getElementById('result');
   window.scrollTo(0,0);
+  let currentPage = 1;
+  const pageSize = 9;
+  const pageCount = Math.ceil(productsList.products!.length / pageSize);
 
-  const renderGoods = (feturedCardsHtmlEl: HTMLElement | null) => {
-    for (let i = 0; i < 9; i++) {
-      feturedCardsHtmlEl ?
-      feturedCardsHtmlEl.insertAdjacentHTML('beforeend', productsList.getHTMLString(i)) :
-      '';
+  const renderGoods = () => {
+    const feturedCardsHtmlEl = document.getElementById('fetured__cards');
+    feturedCardsHtmlEl!.innerHTML = '';
+    const start = (currentPage - 1) * pageSize;
+    const end = start + pageSize;
+    for (let i = start; i < end; i++) {
+      if(productsList.products![i] !== undefined) {
+        feturedCardsHtmlEl ?
+          feturedCardsHtmlEl.insertAdjacentHTML('beforeend', productsList.getHTMLStringProduct(i)) :
+          '';
+      }
     }
   };
 
-  let promise = new Promise(function(resolve, reject) {
+  const renderPagination = (paginationHtmlEl: HTMLElement | null) => {
+    for (let i = 1; i <= pageCount; i++) {
+      paginationHtmlEl ?
+        paginationHtmlEl.insertAdjacentHTML(
+          'beforeend', `<a data-id="${i}" href="#">${i}</a>`
+        ) :
+        '';
+    }
+  };
+
+  const changePage = (ev: MouseEvent, element: HTMLElement) => {
+    ev.preventDefault();
+    const elementId = element.dataset['id'];
+    
+    if(element.tagName === 'A') {
+      if(Number(elementId) === currentPage) {
+        return;
+      }
+      window.scrollTo(0,0);
+      currentPage = Number(elementId);
+      renderGoods();
+    } else if(element.tagName === 'IMG') {
+      switch(elementId) {
+      case('arrowLeft'): {
+        if(currentPage === 1) {
+          return;
+        } else {
+          window.scrollTo(0,0);
+          currentPage -= 1;
+          renderGoods();
+        }
+      } break;
+      case('arrowRight'): {
+        if(currentPage === pageCount) {
+          return;
+        } else {
+          window.scrollTo(0,0);
+          currentPage += 1;
+          renderGoods();
+        }
+      }
+      }
+    }
+  };
+
+  const promise = new Promise(function(resolve, reject) {
     resolve('done');
     reject((err: Error) => console.log(err));
   });
 
   promise.then(() => {
-    const feturedCardsHtmlEl = document.getElementById('fetured__cards');
-    renderGoods(feturedCardsHtmlEl);
-  }).catch((err: Error) => console.log(err))
+    renderGoods();
+    const paginationBlock = document.getElementById('paginationBlock');
+    const paginationHtmlEl = document.getElementById('pagination');
+    const blockProducts: HTMLDivElement | null = document.querySelector('#fetured__cards');
+    cartList.handleClickBuyBtn(blockProducts!);
+    renderPagination(paginationHtmlEl);
+    paginationBlock?.addEventListener('click', (ev) => changePage(ev, ev.target as HTMLElement));
+  }).catch((err: Error) => console.log(err));
 
   catalogHtmlEl ?
-  catalogHtmlEl.innerHTML = `
+    catalogHtmlEl.innerHTML = `
     <div class="${style.arrivals}">
       <div class="${styleGlobal.container}">
         <div class="${style.arrivals__new}">
@@ -103,43 +162,40 @@ export const catalog = () => {
       </div>
     </nav>
     <div id="fetured__cards" class="${styleMain.fetured__cards} ${styleGlobal.container}"></div>
-    <nav class="${style.pagination}">
-      <a href="#"><img src="${imgArrowLeft}" alt="ArrowLeft"></a>
-      <a href="#">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">4</a>
-      <a href="#">5</a>
-      <a href="#">6.....20</a>
-      <a href="#"><img src="${imgArrowRight}" alt="ArrowRight"></a>
-    </nav>
+    <div class="${style.block} ${styleGlobal.container}">
+      <nav id="paginationBlock" class="${style.pagination}">
+        <img data-id="arrowLeft" src="${imgArrowLeft}" alt="ArrowLeft">
+        <div id="pagination" class="${style.pagination__pages}"></div>
+        <img data-id="arrowRight" src="${imgArrowRight}" alt="ArrowRight">
+      </nav>
+    </div>
     <div class="${styleMain.services}">
       <div class="${styleGlobal.container}">
         <div class="${styleMain.services__wrap}">
           <div class="${styleMain.services__wrap__unit}">
             <img src="${imgForma1}" alt="photo">
             <h3 class="${styleMain.h3__forma_1}">Free Delivery</h3>
-            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with
-              extensive
-              models.</p>
+            <p>Worldwide delivery on all. 
+              Authorit tively morph next-generation innov tion with extensive models.
+            </p>
           </div>
           <div class="${styleMain.services__wrap__unit}">
             <img src="${imgForma2}" alt="photo">
             <h3 class="${styleMain.h3__forma_2}">Sales & discounts</h3>
-            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with
-              extensive
-              models.</p>
+            <p>Worldwide delivery on all. 
+              Authorit tively morph next-generation innov tion with extensive models.
+            </p>
           </div>
           <div class="${styleMain.services__wrap__unit}">
             <img src="${imgForma3}" alt="photo">
             <h3 class="${styleMain.h3__forma_3}">Quality assurance</h3>
-            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with
-              extensive
-              models.</p>
+            <p>Worldwide delivery on all. 
+              Authorit tively morph next-generation innov tion with extensive models.
+            </p>
           </div>
         </div>
       </div>
     </div>
   ` :
-  ''
+    '';
 };

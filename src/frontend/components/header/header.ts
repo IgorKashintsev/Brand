@@ -31,29 +31,29 @@ export const header = () => {
       const elemId = elem.dataset['id'];
 
       if(elem.id !== 'bar' && elem.id !== 'menu' && elemId !== 'menuChild') {
-        menuHtmlEl?.classList.add(`${style.none}`)
+        menuHtmlEl?.classList.add(`${style.none}`);
       } else if(elem.id === 'bar') {
-        menuHtmlEl?.classList.toggle(`${style.none}`)
+        menuHtmlEl?.classList.toggle(`${style.none}`);
       }
 
       if(cartList.checkAuth() && elem.id === 'user') {
-        userMenuHtmlEl?.classList.toggle(`${style.none}`)
+        userMenuHtmlEl?.classList.toggle(`${style.none}`);
       } else if(!cartList.checkAuth() && elem.id === 'user') {
-        location.hash = 'signin'
+        location.hash = 'signin';
       } else if(
-          elem.id !== 'user' && 
+        elem.id !== 'user' && 
           elem.id !== 'userMenu' && 
           elem.id !== 'userFirstname' &&
           elem.id !== 'userHr'
-        ) {
-        userMenuHtmlEl?.classList.add(`${style.none}`)
+      ) {
+        userMenuHtmlEl?.classList.add(`${style.none}`);
       }
-    })
+    });
 
     logoutHtmlEl?.addEventListener('click', () => {
       user.logout();
-      userMenuHtmlEl?.classList.add(`${style.none}`)
-    })
+      userMenuHtmlEl?.classList.add(`${style.none}`);
+    });
     logoHtmlEl?.addEventListener('click', () => location.hash = '');
     cartHtmlEl?.addEventListener('click', () => location.hash = 'cart');
     searchHtmlEl?.addEventListener('click', () => console.log(location.href));

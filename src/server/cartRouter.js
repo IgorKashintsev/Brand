@@ -19,8 +19,8 @@ const writeJsonDb = (res, allUsers, userIdx) => {
         }
       ));
     }
-  })
-}
+  });
+};
 
 router.post('/:login', (req, res) => {
   fs.readFile(usersJSONPath, 'utf-8', (err, data) => {

@@ -1,9 +1,9 @@
-import { CartProduct } from "src/frontend/types";
+import { CartProduct } from 'src/frontend/types';
 import style from './cartUser.module.scss';
 import styleHeader from '../header/header.module.scss';
 import imgClose from 'images/close_2.svg';
-import { user } from "../user/user";
-import { productsList } from "../goods/goods";
+import { user } from '../user/user';
+import { productsList } from '../goods/goods';
 
 export class CartList {
   quantityCart: number;
@@ -53,16 +53,16 @@ export class CartList {
   }
 
   async postCartJson(
-      method: string, 
-      userLogin: string, 
-      data: CartProduct,
-      productIdDel?: number,
-    ) {
+    method: string, 
+    userLogin: string, 
+    data: CartProduct,
+    productIdDel?: number,
+  ) {
     try {
       const response = await fetch(`/cart/${userLogin}`, {
         method: `${method}`,
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
       });
@@ -82,7 +82,7 @@ export class CartList {
       const response = await fetch(`/cart/${userLogin}`, {
         method: 'DELETE',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
       });
       const data_1 = await response.json();
@@ -189,7 +189,7 @@ export class CartList {
     if(this.checkAuth()) {
       this.deleteCartJson(userLogin, element);
     } else {
-      cartContents = []
+      cartContents = [];
       user.changeLocalStorageAnonym(cartContents, element);
     }
   }

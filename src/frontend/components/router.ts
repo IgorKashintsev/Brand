@@ -10,33 +10,33 @@ export const handleHash = () => {
   const  hash = location.hash ? location.hash.slice(1) : '';
 
   switch(hash) {
-    case('catalog'):
-      catalog();
-      break;
-    case(''):
+  case('catalog'):
+    catalog();
+    break;
+  case(''):
+    main();
+    break;
+  case('product'):
+    product();
+    break;
+  case('signin'): {
+    if(!cartList.checkAuth()) {
+      signIn();
+    } else {
       main();
-      break;
-    case('product'):
-      product();
-      break;
-    case('signin'): {
-        if(!cartList.checkAuth()) {
-          signIn();
-        } else {
-          main();
-        }
-      }
-      break;
-    case('registration'):
-      registration();
-      break;
-    case('cart'):
-      cart();
-      break;
+    }
+  }
+    break;
+  case('registration'):
+    registration();
+    break;
+  case('cart'):
+    cart();
+    break;
   }
 };
 
 export const init = () => {
   addEventListener('hashchange', handleHash);
-  handleHash()
+  handleHash();
 };

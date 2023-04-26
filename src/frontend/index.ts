@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     header();
     init();
     footer();
-  }
+  };
 
   runApp();
 });

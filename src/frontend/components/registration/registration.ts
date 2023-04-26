@@ -37,7 +37,7 @@ export const registration = () => {
       let gender = '';
       for (const entry of data) {
         gender = entry[1].toString();
-      };
+      }
       user.postUserJson(
         {
           firstName: firstName,

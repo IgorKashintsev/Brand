@@ -35,7 +35,7 @@ export const signIn = () => {
   }).catch((err: Error) => console.log(err));
 
   signInHtmlEl ?
-  signInHtmlEl.innerHTML = `
+    signInHtmlEl.innerHTML = `
     <div class="${styleCart.shopping}">
       <div class="${styleGlobal.container}">
         <div class="${styleCart.shopping__header}">SIGN IN</div>

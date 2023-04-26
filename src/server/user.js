@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
               }
             ));
           }
-        })
+        });
       } else {
         res.sendStatus(404).end();
       }

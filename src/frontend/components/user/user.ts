@@ -1,9 +1,9 @@
-import { CartProduct, UserLogPass, UserObj, UserObjJson } from "src/frontend/types";
+import { CartProduct, UserLogPass, UserObj, UserObjJson } from 'src/frontend/types';
 import styleHeader from '../header/header.module.scss';
 import styleSignin from '../signin/signin.module.scss';
 import styleRegistration from '../registration/registration.module.scss';
-import { CartList } from "../cartUser/cartUser";
-import { cart } from "../cart/cart";
+import { CartList } from '../cartUser/cartUser';
+import { cart } from '../cart/cart';
 
 export class User extends CartList{
 
@@ -26,10 +26,10 @@ export class User extends CartList{
   }
 
   changeLocalStorageAnonym(
-      newCartContents: CartProduct[], 
-      element?: HTMLElement | null,
-      productIdDel?: number,
-    ) {
+    newCartContents: CartProduct[], 
+    element?: HTMLElement | null,
+    productIdDel?: number,
+  ) {
     localStorage.removeItem('user');
     localStorage.setItem('user', JSON.stringify(
       {
@@ -57,7 +57,7 @@ export class User extends CartList{
     fetch('/user', {
       method: 'SEARCH',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     })
@@ -70,27 +70,27 @@ export class User extends CartList{
         this._updateHeaderUserFirstName();
         this._updateHeaderCart();
       })
-      .catch(() => this.onLoginError())
+      .catch(() => this.onLoginError());
   }
 
   postUserJson(data: UserObjJson) {
     fetch('/user', {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     })
       .then((response) => response.json())
       .then(result => {
-          this.changeLocalStorageAuth(result);
-          location.hash = '';
+        this.changeLocalStorageAuth(result);
+        location.hash = '';
       })
       .then(() => {
         this._updateHeaderUserFirstName();
         this._updateHeaderCart();
       })
-      .catch(() => this.onRegistError())
+      .catch(() => this.onRegistError());
   }
 
   onLoginError() {
@@ -125,7 +125,7 @@ export class User extends CartList{
     this.dataLocalStorage();
     document.querySelector('#auth')?.classList
       .remove(`${styleHeader.header__top__userAuth__background}`);
-    this._updateHeaderUserFirstName()
+    this._updateHeaderUserFirstName();
     this._updateHeaderCart();
     if(location.hash === '#cart') {
       cart();

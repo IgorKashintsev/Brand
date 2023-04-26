@@ -38,7 +38,7 @@ export const catalog = () => {
   const onCurrentPage = () => {
     const paginationHTML = document.getElementById('pagination');
     if (paginationHTML) {
-      for (let page of Array.from(paginationHTML.children)) {
+      for (const page of Array.from(paginationHTML.children)) {
         
         if(page.id === `page-${currentPage}`) {
           page.classList.add(`${style.pagination__pages__a__active}`);
@@ -47,7 +47,7 @@ export const catalog = () => {
         }
       }
     }
-  }
+  };
 
   const renderPagination = (paginationHtmlEl: HTMLElement | null) => {
     for (let i = 1; i <= pageCount; i++) {
@@ -127,7 +127,7 @@ export const catalog = () => {
       } else if(elemId !== 'size' && elem.id !== 'sizeMenu' && elemId !== 'sizeCheckbox') {
         sizeMenuHtmlEl?.classList.remove(`${style.filters__right__size__menu__active}`);
       }
-    })
+    });
     paginationBlock?.addEventListener('click', (ev) => changePage(ev, ev.target as HTMLElement));
   }).catch((err: Error) => console.log(err));
 

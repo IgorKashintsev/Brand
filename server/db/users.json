@@ -1,0 +1,23 @@
+[
+  {
+    "firstName": "Igor",
+    "lastName": "Kashin",
+    "gender": "Male",
+    "login": "igor@igor.ru",
+    "password": "111",
+    "cartContents": [
+      {
+        "id": 3,
+        "image": "http://localhost:5555/images/products/Rectangle_15_copy_3.png",
+        "price": 52,
+        "quantity": 2
+      },
+      {
+        "id": 7,
+        "image": "http://localhost:5555/images/products/Rectangle_15_copy_7.png",
+        "price": 52,
+        "quantity": 2
+      }
+    ]
+  }
+]

@@ -1,0 +1,151 @@
+.product {
+  min-height: 777px;
+  background: #F7F7F7;
+  border: 1px solid #EAEAEA;
+  position: relative;
+  &__arrowLeft,
+  &__arrowRight {
+    height: 47px;
+    width: 47px;
+    background-color: rgba(42, 42, 42, 0.15);
+    background-repeat: no-repeat;
+    background-position: center center;
+    top: calc(50% - 47px / 2);
+    position: absolute;
+  }
+  &__arrowLeft {
+    left: 0;
+    background-image: url(/public/images/arrow_left_alt2.svg);
+    &:hover {
+      background-image: url(/public/images/arrowPink_left_alt2.svg);
+      cursor: pointer;
+    }
+  }
+  &__img img{
+    max-width: 100%;
+    object-fit: cover;
+    margin: 11px auto 42px auto;
+    display: block;
+    @media (min-width: 768px) and (max-width: 1600px) {
+      margin-top: 30px;
+      margin-bottom: 29px;
+    }
+    @media (max-width: 767px) {
+      margin-top: 85px;
+      margin-bottom: 85px;
+    }
+  }
+  &__arrowRight {
+    right: 0;
+    background-image: url(/public/images/arrow_right_alt2.svg);
+    &:hover {
+      background-image: url(/public/images/arrowPink_right_alt2.svg);
+      cursor: pointer;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1600px) {
+    min-height: 624px;
+  }
+  @media (max-width: 767px) {
+    min-height: 624px;
+  }
+}
+.collection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 65px;
+  padding-bottom: 65px;
+  border: 1px solid #EAEAEA;
+  margin-bottom: 129px;
+  position: relative;
+  margin-top: -65px;
+  background: #FFFFFF;
+  & h2 {
+    font-weight: 300;
+    font-size: 14px;
+    color: #F16D7F;
+  }
+  &__dividerPink {
+    height: 3px;
+    width: 63px;
+    background: #EF5B70;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  &__moschino {
+    font-weight: 300;
+    font-size: 18px;
+    color: #4D4D4D;
+  }
+  &__text {
+    max-width: 580px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #5E5E5E;
+    margin-top: 48px;
+    margin-bottom: 32px;
+    @media (max-width: 767px) {
+      margin-top: 32px;
+    }
+  }
+  &__price {
+    font-weight: 300;
+    font-size: 24px;
+    color: #EF5B70;
+  }
+  &__dividerGray {
+    height: 1px;
+    width: 641px;
+    background: #EAEAEA;
+    margin-top: 65px;
+    margin-bottom: 65px;
+    @media (max-width: 767px) {
+      margin-top: 32px;
+      margin-bottom: 50px;
+      width: 175px;
+    }
+  }
+  &__choose {
+    display: inline-flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #6F6E6E;
+    &__size {
+      margin-left: 23px;
+    }
+    &__quantity {
+      margin-left: 23px;
+    }
+    & img {
+      padding-bottom: 1px;
+      padding-left: 9px;
+    }
+    @media (max-width: 767px) {
+      font-size: 10px;
+    }
+  }
+  & button {
+    display: flex;
+    border: 1px solid #FF6A6A;
+    padding: 10px 40px;
+    align-items: center;
+    font-size: 16px;
+    color: #F26376;
+    background: none;
+    margin-top: 49px;
+    & img {
+      padding-right: 23px;
+    }
+  }
+  @media (max-width: 767px) {
+    margin-bottom: 65px;
+  }
+}
+.margin {
+  height: 128px;
+  @media (max-width: 767px) {
+    height: 64px;
+  }
+}

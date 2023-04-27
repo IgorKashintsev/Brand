@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    node: true
   },
   parser: "@typescript-eslint/parser",
   extends: [
@@ -13,5 +14,6 @@ module.exports = {
     quotes: ['error', 'single'],
     indent: ['error', 2],
     semi: ['error', 'always'],
+    '@typescript-eslint/no-var-requires': 0,
   },
 }

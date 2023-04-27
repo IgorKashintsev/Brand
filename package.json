@@ -4,14 +4,12 @@
   "description": "Brand",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode=development",
-    "build": "webpack --mode=production",
     "buildDev": "webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.front.config.js --watch",
     "buildProd": "webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.front.config.js",
     "startNode": "nodemon build/server/server.js",
     "lint": "npx tsc --noEmit && npx eslint ./src --ext .js,.ts",
     "lint-fix": "npx tsc --noEmit && npx eslint ./src --ext .js,.ts --fix",
-    "predeploy": "npm run build",
+    "predeploy": "npm run buildProd",
     "deploy": "gh-pages -d build"
   },
   "repository": {

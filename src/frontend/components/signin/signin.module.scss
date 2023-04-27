@@ -39,10 +39,10 @@
         bottom: 2px;
       }
     }
-    &__errorLog {
+    &__errorReg {
       color: red;
       position: absolute;
-      margin-top: 155px;
+      margin-top: 320px;
       font-weight: 300;
       font-size: 13px;
       line-height: 16px;
@@ -50,15 +50,13 @@
         display: none;
       }
     }
-    &__buttons {
-      display: flex;
-      justify-content: space-between;
-      width: 360px;
-      margin-top: 39px;
-      @media (max-width: 378px) {
-        flex-direction: column;
-        height: 120px;
-      }
+    &__info {
+      margin-top: 15px;
+      margin-bottom: 39px;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 16px;
+      color: #B1B1B1;
     }
     & button {
       width: 167px;
@@ -73,6 +71,57 @@
       }
     }
   }
+  &__loyalty {
+    margin-left: 128px;
+    & h3 {
+      font-weight: 300;
+      font-size: 24px;
+      @media (min-width: 768px) and (max-width: 1600px) {
+        font-size: 16px;
+      }
+      @media (max-width: 767px) {
+        font-size: 16px;
+      }
+    }
+    & p {
+      max-width: 645px;
+      margin-top: 22px;
+      margin-bottom: 21px;
+      font-weight: 300;
+      font-size: 24px;
+      @media (min-width: 768px) and (max-width: 1600px) {
+        font-size: 16px;
+      }
+      @media (max-width: 767px) {
+        font-size: 16px;
+      }
+    }
+    &__perks {
+      font-weight: 300;
+      font-size: 24px;
+      & img {
+        margin-right: 23px;
+      }
+      & div:not(:last-child) {
+        margin-bottom: 16px;
+      }
+      @media (min-width: 768px) and (max-width: 1600px) {
+        font-size: 16px;
+      }
+      @media (max-width: 767px) {
+        font-size: 16px;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 1600px) {
+      margin-left: 22px;
+      max-width: 360px;
+    }
+    @media (max-width: 767px) {
+      margin-left: 0;
+      max-width: 360px;
+      margin-top: 40px;
+    }
+  }
   @media (min-width: 768px) and (max-width: 1600px) {
     margin-top: 40px;
   }
@@ -81,7 +130,4 @@
     flex-direction: column;
     align-items: center;
   }
-}
-.adaptive {
-  width: 100%;
 }

@@ -24,7 +24,6 @@ export const header = () => {
     const cartHtmlEl = document.getElementById('basket');
     const userMenuHtmlEl = document.getElementById('userMenu');
     const logoutHtmlEl = document.getElementById('logout');
-    const searchHtmlEl = document.getElementById('search');
 
     bodyHtmlEl.addEventListener('click', (ev) => {
       const elem = ev.target as HTMLElement;
@@ -39,7 +38,7 @@ export const header = () => {
       if(cartList.checkAuth() && elem.id === 'user') {
         userMenuHtmlEl?.classList.toggle(`${style.none}`);
       } else if(!cartList.checkAuth() && elem.id === 'user') {
-        location.hash = 'signin';
+        location.hash = 'login';
       } else if(
         elem.id !== 'user' && 
           elem.id !== 'userMenu' && 
@@ -56,7 +55,6 @@ export const header = () => {
     });
     logoHtmlEl?.addEventListener('click', () => location.hash = '');
     cartHtmlEl?.addEventListener('click', () => location.hash = 'cart');
-    searchHtmlEl?.addEventListener('click', () => console.log(location.href));
     cartList._updateHeaderCart();
     user._updateHeaderUserFirstName();
   }).catch((err: Error) => console.log(err));

@@ -1,7 +1,7 @@
 import { CartProduct, UserLogPass, UserObj, UserObjJson } from 'src/frontend/types';
 import styleHeader from '../header/header.module.scss';
+import styleLogin from '../login/login.module.scss';
 import styleSignin from '../signin/signin.module.scss';
-import styleRegistration from '../registration/registration.module.scss';
 import { CartList } from '../cartUser/cartUser';
 import { cart } from '../cart/cart';
 
@@ -95,18 +95,18 @@ export class User extends CartList{
 
   onLoginError() {
     document.querySelector('#login')?.classList
-      .add(`${styleSignin.registration__login__input__error}`);
+      .add(`${styleLogin.registration__login__input__error}`);
     document.querySelector('#password')?.classList
-      .add(`${styleSignin.registration__login__input__error}`);
+      .add(`${styleLogin.registration__login__input__error}`);
     document.querySelector('#errLog')?.classList
-      .remove(`${styleSignin.registration__login__errorLog__none}`);
+      .remove(`${styleLogin.registration__login__errorLog__none}`);
   }
 
   onRegistError() {
     document.querySelector('#loginReg')?.classList
-      .add(`${styleRegistration.registration__login__input__error}`);
+      .add(`${styleSignin.registration__login__input__error}`);
     document.querySelector('#errorReg')?.classList
-      .remove(`${styleRegistration.registration__login__errorReg__none}`);
+      .remove(`${styleSignin.registration__login__errorReg__none}`);
   }
 
   _updateHeaderUserFirstName() {

@@ -3,8 +3,8 @@ import { cartList } from './cartUser/cartUser';
 import { catalog } from './catalog/catalog';
 import { main } from './main/main';
 import { product } from './product/product';
-import { registration } from './registration/registration';
-import { signIn } from './signin/signin';
+import { signin } from './signin/signin';
+import { login } from './login/login';
 
 export const handleHash = () => {
   const  hash = location.hash ? location.hash.slice(1) : '';
@@ -19,16 +19,16 @@ export const handleHash = () => {
   case('product'):
     product();
     break;
-  case('signin'): {
+  case('login'): {
     if(!cartList.checkAuth()) {
-      signIn();
+      login();
     } else {
       main();
     }
   }
     break;
-  case('registration'):
-    registration();
+  case('signin'):
+    signin();
     break;
   case('cart'):
     cart();

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "buildDev": "webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.front.config.js --watch",
-    "buildProd": "webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.front.config.js",
-    "startNode": "nodemon build/server/server.js",
+    "build": "webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.front.config.js",
+    "start": "nodemon build/server/server.js",
     "lint": "npx tsc --noEmit && npx eslint ./src --ext .js,.ts",
     "lint-fix": "npx tsc --noEmit && npx eslint ./src --ext .js,.ts --fix",
     "predeploy": "npm run buildProd",
